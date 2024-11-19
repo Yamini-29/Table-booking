@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Table Booking System</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .booked {
+      background-color: #f87171; /* Booked slots in red */
+      color: white;
+      pointer-events: none; /* Disable clicking */
+    }
+    .available:hover {
+      background-color: #4caf50; /* Green hover for available slots */
+      color: white;
+    }
+  </style>
+</head>
+<body class="bg-gray-100 min-h-screen font-sans">
+
+  <!-- Page 1: Table Selection -->
+  <div id="tableSelectionPage" class="max-w-xl mx-auto bg-white p-8 rounded-lg shadow-lg mt-12">
+    <h1 class="text-3xl font-bold mb-6 text-center text-gray-800">Select a Table</h1>
+    <div class="grid grid-cols-2 gap-6">
+      <button class="w-full py-4 text-white bg-blue-500 rounded-lg hover:bg-blue-700 table-btn" data-table="Table1">Table 1</button>
+      <button class="w-full py-4 text-white bg-blue-500 rounded-lg hover:bg-blue-700 table-btn" data-table="Table2">Table 2</button>
+      <button class="w-full py-4 text-white bg-blue-500 rounded-lg hover:bg-blue-700 table-btn" data-table="Table3">Table 3</button>
+      <button class="w-full py-4 text-white bg-blue-500 rounded-lg hover:bg-blue-700 table-btn" data-table="Table4">Table 4</button>
+    </div>
+  </div>
+
+  <!-- Page 2: Date & Time Slot Selection -->
+  <div id="bookingPage" class="hidden max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-lg mt-12">
+    <button onclick="goBackToTableSelection()" class="py-3 px-6 bg-gray-600 text-white rounded-lg mb-8 hover:bg-gray-800" id="backButton">Back to Table Selection</button>
+    <h1 class="text-3xl font-bold mb-6 text-center text-gray-800">Booking for <span id="tableName"></span></h1>
+    <div class="flex justify-between items-start">
+      <div class="w-1/3 pr-4">
+        <label for="calendar" class="block text-xl font-semibold text-gray-700 mb-2">Select a Date</label>
+        <input type="date" id="calendar" class="w-full p-3 rounded-lg border-gray-300 shadow-sm focus:ring-indigo-500" onchange="loadTimeSlots()">
+      </div>
+      <div id="timeSlots" class="w-2/3 pl-4">
+        <p class="text-gray-600 text-lg">Please select a date to view time slots.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Importing the script.js -->
+  <script src="script.js"></script>
+
+</body>
+</html>
